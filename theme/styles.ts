@@ -85,66 +85,83 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
-  category: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 25,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginRight: 12,
-    borderWidth: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.05,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
-  },
-  categoryLabel: {
-    color: '#555',
-    fontSize: 15,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
-  },
+category: {
+  backgroundColor: '#fff',
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+  marginRight: 12,
+  borderRadius: 12,
+  borderWidth: 1,
+  borderColor: '#ddd',
+  shadowColor: '#000',
+  shadowOpacity: 0.1,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 4,
+  elevation: 3,
+},
+// theme/styles.ts
+
+categoryCard: {
+  width: 100,
+  height: 120,
+  backgroundColor: '#fff',
+  borderRadius: 12,
+  padding: 6,
+  marginRight: 12,
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.1,
+  shadowRadius: 3,
+  elevation: 2,
+},
+
+cardImage: {
+  width: 80,
+  height: 80,
+  borderRadius: 10,
+  marginBottom: 6,
+  resizeMode: 'cover',
+},
+
+categoryLabel: {
+  fontSize: 14,
+  fontWeight: '500',
+  textAlign: 'center',
+},
+
 
   // Recommendations
   recommendations: {
     paddingHorizontal: 20,
     marginBottom: 20,
   },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 15,
-    padding: 15,
-    marginRight: 15,
-    width: 200,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-      },
-      android: {
-        elevation: 6,
-      },
-    }),
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#2C3E50',
-    marginBottom: 6,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
-  },
-  cardSubtitle: {
-    fontSize: 13,
-    color: '#7F8C8D',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
-  },
+card: {
+  backgroundColor: '#fff',
+  padding: 16,
+  borderRadius: 16,
+  marginRight: 12,
+  width: 200,
+  borderWidth: 1,
+  borderColor: '#e5e7eb', // light gray
+  shadowColor: '#000',
+  shadowOpacity: 0.1,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 6,
+  elevation: 4,
+},
+cardTitle: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  color: '#1C1C1E',
+},
+cardSubtitle: {
+  marginTop: 4,
+  fontSize: 12,
+  color: '#6b7280',
+},
+
 
   // Nearby Salons
   nearbySalonsContainer: {
@@ -360,35 +377,6 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
     backgroundColor: '#FDFDFD',
   },
-
-  // Cards (Reusable)
-  categoryCard: {
-    backgroundColor: '#fff',
-    paddingVertical: 24,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    marginRight: 12,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 100,
-  },
-  recommendationCard: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    marginRight: 12,
-    padding: 12,
-    width: 140,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 3,
-  },
   discountPill: {
     backgroundColor: '#C8102E',
     paddingVertical: 4,
@@ -401,12 +389,107 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
   },
-  recommendationTitle: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#222',
-    textAlign: 'center',
-  },
+recommendationCard: {
+  backgroundColor: '#fff',
+  borderRadius: 16,
+  padding: 12,
+  width: 160,
+  marginRight: 12,
+  shadowColor: '#000',
+  shadowOpacity: 0.1,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 4,
+  elevation: 4,
+},
+recommendationImage: {
+  width: '100%',
+  height: 100,
+  borderRadius: 12,
+  marginBottom: 8,
+},
+recommendationTitle: {
+  fontSize: 14,
+  fontWeight: 'bold',
+  color: '#222',
+  marginBottom: 4,
+},
+recommendationSubtitle: {
+  fontSize: 12,
+  color: '#666',
+},
+
+  button: {
+  backgroundColor: '#D2042D', // primary
+  paddingVertical: 12,
+  paddingHorizontal: 24,
+  borderRadius: 9999,
+  alignItems: 'center',
+  marginVertical: 8,
+  shadowColor: '#000',
+  shadowOpacity: 0.2,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 4,
+  elevation: 5,
+},
+buttonText: {
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: 16,
+},
+// In theme/styles.ts
+bookingItem: {
+  backgroundColor: '#fff',
+  borderRadius: 10,
+  padding: 12,
+  marginVertical: 6,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.1,
+  shadowRadius: 2,
+  elevation: 2,
+},
+
+bookingText: {
+  fontSize: 16,
+  fontWeight: '500',
+  color: '#1e1e1e',
+  marginBottom: 4,
+},
+
+bookingTime: {
+  fontSize: 14,
+  color: '#666',
+},
+
+// styles.ts
+
+slot: {
+  paddingVertical: 8,
+  paddingHorizontal: 16,
+  borderRadius: 20,
+  borderWidth: 1,
+  borderColor: '#ccc',
+  backgroundColor: '#fff',
+  marginRight: 10,
+},
+
+slotActive: {
+  backgroundColor: '#D80032',
+  borderColor: '#D80032',
+},
+
+slotText: {
+  fontSize: 16,
+  color: '#333',
+},
+
+slotTextActive: {
+  fontSize: 16,
+  color: '#fff',
+  fontWeight: 'bold',
+},
+
+
 });
 
 export default styles;
