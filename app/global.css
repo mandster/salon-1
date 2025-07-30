@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #D2042D;
+  --color-linen: #F0ECE2;
+  --color-text-dark: #1C1C1E;
+}
+
+body {
+  @apply bg-[var(--color-linen)] text-[var(--color-text-dark)] font-sans;
+}
