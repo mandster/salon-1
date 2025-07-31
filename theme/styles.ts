@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: '#2C3E50',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   locationText: {
     fontSize: 15,
     color: '#7F8C8D',
     marginTop: 4,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
 
   // Search Bar
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   searchText: {
     color: '#888',
     fontSize: 16,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
 
   // Section Title
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     color: '#2C3E50',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
 
   // Categories
@@ -200,20 +200,20 @@ cardSubtitle: {
     fontWeight: '700',
     color: '#2C3E50',
     marginBottom: 5,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   salonType: {
     fontSize: 15,
     color: '#7F8C8D',
     marginBottom: 5,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   salonDiscount: {
     fontSize: 15,
     color: '#E74C3C',
     fontWeight: '600',
     marginBottom: 10,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   salonRatingDistance: {
     flexDirection: 'row',
@@ -223,12 +223,12 @@ cardSubtitle: {
     fontSize: 15,
     color: '#F39C12',
     marginRight: 8,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   salonDistance: {
     fontSize: 15,
     color: '#7F8C8D',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
 
   // Buttons
@@ -263,7 +263,7 @@ cardSubtitle: {
     color: '#FFFFFF',
     fontSize: 17,
     fontWeight: '700',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
     letterSpacing: 0.5,
   },
   buttonSecondary: {
@@ -292,7 +292,7 @@ cardSubtitle: {
     color: '#6A0DAD',
     fontSize: 16,
     fontWeight: '600',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
     letterSpacing: 0.3,
   },
 
@@ -325,7 +325,7 @@ cardSubtitle: {
     fontSize: 13,
     color: '#7F8C8D',
     fontWeight: '600',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   navItemActive: {
     color: '#6B46C1',
@@ -364,7 +364,7 @@ cardSubtitle: {
     color: '#2C3E50',
     marginBottom: 20,
     textAlign: 'center',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
   input: {
     borderWidth: 1,
@@ -374,7 +374,7 @@ cardSubtitle: {
     marginBottom: 15,
     fontSize: 16,
     color: '#2C3E50',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
     backgroundColor: '#FDFDFD',
   },
   discountPill: {

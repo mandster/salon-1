@@ -1,6 +1,8 @@
 // app/page.tsx
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import dayjs from 'dayjs';
 import emailjs from 'emailjs-com';
+import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
@@ -19,10 +21,13 @@ import {
 import DatePicker, { DateType } from 'react-native-ui-datepicker';
 import styles from '../theme/styles';
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/en'; // or any other locale you actually want
-
-dayjs.locale('en');
+const showToast = (msg: string) => {
+  if (Platform.OS === 'android') {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  } else {
+    Alert.alert('Notice', msg);
+  }
+};
 
 
 const BottomNav = ({ activeTab, onTabChange }: { activeTab: string; onTabChange: (tab: string) => void }) => (
@@ -123,40 +128,27 @@ const BookNowModal = ({ visible, onClose, selectedSalon }: { visible: boolean; o
     }
   }, [visible, selectedSalon]);
 
-const normalizeToDate = (input: DateType): Date => {
-  if (dayjs.isDayjs(input)) return input.toDate();
-  if (input instanceof Date) return input;
-  return new Date(input);
-};
+  const normalizeToDate = (input: DateType): Date => {
+    if (input instanceof Date) return input;
+    if (typeof input === 'string' || typeof input === 'number') return new Date(input);
+    if (typeof input === 'object' && 'toDate' in input) return input.toDate();
+    return new Date();
+  };
 
-const showToast = (msg: string) => {
-  if (Platform.OS === 'android') {
-    ToastAndroid.show(msg, ToastAndroid.SHORT);
-  } else {
-    Alert.alert('Booking Status', msg);
-  }
-};
-
-const saveBooking = async () => {
-  if (!name || !service || !date) return;
-  const booking = { name, service, salon: selectedSalon, time: date.toISOString(), createdAt: Date.now() };
-  const existing = await AsyncStorage.getItem('bookings');
-  const bookings = existing ? JSON.parse(existing) : [];
-  bookings.push(booking);
-  await AsyncStorage.setItem('bookings', JSON.stringify(bookings));
-  
-  sendEmailConfirmation(booking)
-    .then(() => {
-      showToast('✅ Booking confirmed & email sent!');
-    })
-    .catch(() => {
-      showToast('Booking saved. Failed to send email.');
-    });
-
-  setName('');
-  setService('');
-  onClose();
-};
+  const saveBooking = async () => {
+    if (!name || !service || !date) return;
+    const booking = { name, service, salon: selectedSalon, time: date.toISOString(), createdAt: Date.now() };
+    const existing = await AsyncStorage.getItem('bookings');
+    const bookings = existing ? JSON.parse(existing) : [];
+    bookings.push(booking);
+    await AsyncStorage.setItem('bookings', JSON.stringify(bookings));
+    sendEmailConfirmation(booking)
+      .then(() => showToast('✅ Booking confirmed & email sent!'))
+      .catch(() => showToast('Booking saved. Failed to send email.'));
+    setName('');
+    setService('');
+    onClose();
+  };
 
   return (
     <Modal visible={visible} transparent animationType="slide">
@@ -166,20 +158,19 @@ const saveBooking = async () => {
           <TextInput placeholder="Your Name" value={name} onChangeText={setName} style={styles.input} />
           <TextInput placeholder="Service" value={service} onChangeText={setService} style={styles.input} />
 
-  <Text style={styles.sectionTitle}>Pick a Date:</Text>
-<View style={{ marginBottom: 16 }}>
-  <DatePicker
-    mode="single"
-    date={dayjs(date)}
-    onChange={({ date: selected }) => {
-      if (selected) {
-        setDate(normalizeToDate(selected));
-      }
-    }}
-    locale="en"
-  />
-</View>
-
+          <Text style={styles.sectionTitle}>Pick a Date:</Text>
+          <View style={{ marginBottom: 8 }}>
+            <DatePicker
+              mode="single"
+              date={dayjs(date)}
+              onChange={({ date: selected }) => {
+                if (selected) setDate(normalizeToDate(selected));
+              }}
+            />
+            <Text style={{ marginTop: 8, textAlign: 'center', color: '#555' }}>
+              Selected: {dayjs(date).format('MMMM D, YYYY')}
+            </Text>
+          </View>
 
           <Text style={styles.sectionTitle}>Select Time Slot:</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 10 }}>
@@ -206,6 +197,10 @@ const saveBooking = async () => {
 
 export default function HomePage() {
   const router = useRouter();
+  const [fontsLoaded] = useFonts({
+    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+  });
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedSalon, setSelectedSalon] = useState('');
   const [activeTab, setActiveTab] = useState('Home');
@@ -227,6 +222,8 @@ export default function HomePage() {
     setSelectedSalon(salon);
     setModalVisible(true);
   };
+
+  if (!fontsLoaded) return <Text>Loading...</Text>;
 
   return (
     <SafeAreaView style={styles.safeArea}>
