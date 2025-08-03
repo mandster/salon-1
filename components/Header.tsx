@@ -33,3 +33,5 @@ export const Header = ({ userName, location }: { userName: string; location: str
     </div>
   </header>
 );
+
+export default Header

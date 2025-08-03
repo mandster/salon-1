@@ -1,7 +1,7 @@
 // components/RecommendedScroll.tsx
 import React from 'react';
 
-export const RecommendedScroll = ({ recommendations }: {
+ const RecommendedScroll = ({ recommendations }: {
   recommendations: { name: string; discount: string }[];
 }) => (
   <div className="flex overflow-x-auto gap-4 px-4 recommended">
@@ -16,3 +16,5 @@ export const RecommendedScroll = ({ recommendations }: {
     ))}
   </div>
 );
+
+export default RecommendedScroll

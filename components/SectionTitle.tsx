@@ -7,10 +7,12 @@ interface SectionTitleProps {
 }
 
 // Ensure it's a named export
-export function SectionTitle({ title }: SectionTitleProps) {
+ function SectionTitle({ title }: SectionTitleProps) {
   return (
     <View style={{ paddingHorizontal: 16, paddingVertical: 8 }}>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
     </View>
   );
 }
+
+export default SectionTitle
