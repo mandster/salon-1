@@ -1,20 +1,37 @@
 // components/RecommendedScroll.tsx
 import React from 'react';
+import { Image, ScrollView, Text, TouchableOpacity } from 'react-native';
+import styles from '../theme/styles';
 
- const RecommendedScroll = ({ recommendations }: {
-  recommendations: { name: string; discount: string }[];
-}) => (
-  <div className="flex overflow-x-auto gap-4 px-4 recommended">
-    {recommendations.map((item, index) => (
-      <div
+type Recommendation = {
+  name: string;
+  discount: string;
+  image: any; // or ImageSourcePropType if using React Native Image
+};
+
+type Props = {
+  onPress: (salon: string) => void;
+  recommendations: Recommendation[];
+};
+
+const RecommendedScroll: React.FC<Props> = ({ onPress, recommendations }) => (
+  <ScrollView
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    style={styles.recommendations}
+  >
+    {recommendations.map((rec, index) => (
+      <TouchableOpacity
         key={index}
-        data-discount={item.discount}
-        className="relative w-[180px] h-[220px] flex items-end justify-center text-center text-lg font-semibold bg-white rounded-2xl shadow-md px-4 py-6 shrink-0 transition-transform hover:-translate-y-1 before:content-[attr(data-discount)] before:absolute before:top-0 before:left-0 before:right-0 before:bg-primary before:text-white before:text-xs before:py-1 before:rounded-t-2xl before:text-center"
+        style={styles.recommendationCard}
+        onPress={() => onPress(rec.name)}
       >
-        {item.name}
-      </div>
+        <Image source={rec.image} style={styles.recommendationImage} />
+        <Text style={styles.recommendationTitle}>{rec.name}</Text>
+        <Text style={styles.recommendationSubtitle}>{rec.discount}</Text>
+      </TouchableOpacity>
     ))}
-  </div>
+  </ScrollView>
 );
 
-export default RecommendedScroll
+export default RecommendedScroll;

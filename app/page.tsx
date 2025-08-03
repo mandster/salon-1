@@ -15,6 +15,7 @@ import SearchBar from '../components/SearchBar';
 import SectionTitle from '../components/SectionTitle';
 import styles from '../theme/styles';
 
+
 export default function HomePage() {
   const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);

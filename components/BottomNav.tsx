@@ -1,10 +1,25 @@
+// components/BottomNav.tsx
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import styles from '../theme/styles';
 
- const BottomNav = () => (
-  <div className="fixed bottom-0 w-full bg-white flex justify-around items-center py-3 border-t border-gray-200 shadow-inner">
-    <div className="text-primary text-center text-sm">🏠<br />Home</div>
-    <div className="text-primary text-center text-sm">🔍<br />Search</div>
-    <div className="text-primary text-center text-sm">👤<br />Profile</div>
-  </div>
-);
+type BottomNavProps = {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+};
 
-export default BottomNav
+const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
+  return (
+    <View style={styles.nav}>
+      {['Search', 'Home', 'Bookings', 'Profile'].map((tab) => (
+        <TouchableOpacity key={tab} onPress={() => onTabChange(tab)}>
+          <Text style={[styles.navItem, activeTab === tab && styles.navItemActive]}>
+            {tab}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
+
+export default BottomNav;
