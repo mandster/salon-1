@@ -48,17 +48,16 @@ export default function HomePage() {
             <>
               <Header userName="Croski" location="Shibuya, Tokyo · 150-0002" />
               <SearchBar placeholder="Search salons or services..." />
-
               <SectionTitle title="Categories" />
-              <CategoryScroll
-                categories={[
-                  { name: 'Hair', image: require('../assets/images/hair.png') },
-                  { name: 'Nails', image: require('../assets/images/nails.png') },
-                  { name: 'Brows', image: require('../assets/images/brows.png') },
-                  { name: 'Lashes', image: require('../assets/images/lashes.png') },
-                  { name: 'Bridal', image: require('../assets/images/bridal.png') },
-                ]}
-              />
+<CategoryScroll
+  categories={[
+    { name: 'Hair', image: require('../assets/images/hair.png') },
+    { name: 'Nails', image: require('../assets/images/nails.png') },
+    { name: 'Brows', image: require('../assets/images/brows.png') },
+    { name: 'Lashes', image: require('../assets/images/lashes.png') },
+    { name: 'Bridal', image: require('../assets/images/bridal.png') },
+  ]}
+/>
 
               <SectionTitle title="Recommended" />
               <RecommendedScroll
@@ -67,7 +66,7 @@ export default function HomePage() {
                   {
                     name: 'Velvet Room',
                     discount: 'Free scalp massage',
-                    image: require('../assets/images/hair.png'),
+                    image: require('../assets/images/brows.png'),
                   },
                   {
                     name: 'GlowHaus',

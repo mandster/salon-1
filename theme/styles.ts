@@ -366,17 +366,17 @@ cardSubtitle: {
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#DCDCDC',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 15,
-    fontSize: 16,
-    color: '#2C3E50',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
-    backgroundColor: '#FDFDFD',
-  },
+  // input: {
+  //   borderWidth: 1,
+  //   borderColor: '#DCDCDC',
+  //   borderRadius: 10,
+  //   padding: 15,
+  //   marginBottom: 15,
+  //   fontSize: 16,
+  //   color: '#2C3E50',
+  //   fontFamily: Platform.OS === 'ios' ? 'System' : 'Poppins',
+  //   backgroundColor: '#FDFDFD',
+  // },
   discountPill: {
     backgroundColor: '#C8102E',
     paddingVertical: 4,
@@ -488,7 +488,37 @@ slotTextActive: {
   color: '#fff',
   fontWeight: 'bold',
 },
+ authContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    backgroundColor: '#f9f9f9',
+  },
+  authTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 24,
+    textAlign: 'center',
+    fontFamily: 'Poppins-Bold',
+  },
+  input: {
+    height: 48,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    marginBottom: 16,
+    backgroundColor: '#fff',
+    fontFamily: 'Poppins',
+  },
 
+  link: {
+    color: '#6C63FF',
+    marginTop: 12,
+    textAlign: 'center',
+    fontSize: 14,
+    fontFamily: 'Poppins',
+  },
 
 });
 
