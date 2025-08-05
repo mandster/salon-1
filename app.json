@@ -5,16 +5,17 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "salon",
+    "scheme": "com.jtownboysindia.salon",
+    "platforms": ["ios", "android"],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-  "assets": [
-    "./assets/fonts/"
-  ],
+    "assets": ["./assets/fonts/"],
     "ios": {
+      "bundleIdentifier": "com.jtownboysindia.salon",    
       "supportsTablet": true
     },
     "android": {
+      "package": "com.jtownboysindia.salon",            
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,10 +37,17 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d981d7c9-fcf8-480c-ac0e-eccfe71d03ad"
+      }
     }
   }
 }
