@@ -1,16 +1,16 @@
-// app/layout.tsx
-import { ThemeProvider } from '../lib/ThemeContext';
-import './global.css';
+// app/_layout.tsx or root layout
+import { useFonts } from 'expo-font';
+import { Slot } from 'expo-router';
+import { Text, View } from 'react-native';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>
-<ThemeProvider>
-  <div className="bg-[var(--color-linen)] text-[var(--color-text-dark)]">
-    {children}
-  </div>
-</ThemeProvider>      </body>
-    </html>
-  );
+export default function Layout() {
+  const [fontsLoaded] = useFonts({
+    'Poppins': require('../assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+  });
+
+  if (!fontsLoaded) return <View><Text>Loading...</Text></View>;
+
+  return <Slot />;
 }

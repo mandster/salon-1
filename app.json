@@ -5,17 +5,17 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "com.jtownboysindia.salon",
+    "scheme": "com.salon",
     "platforms": ["ios", "android"],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "assets": ["./assets/fonts/"],
     "ios": {
-      "bundleIdentifier": "com.jtownboysindia.salon",    
+      "bundleIdentifier": "com.salon",    
       "supportsTablet": true
     },
     "android": {
-      "package": "com.jtownboysindia.salon",            
+      "package": "com.salon",            
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -27,7 +27,7 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
+      "plugins": [
       "expo-router",
       [
         "expo-splash-screen",

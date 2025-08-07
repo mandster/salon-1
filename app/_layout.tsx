@@ -1,4 +1,6 @@
+// app/_layout.tsx
 import { Session } from '@supabase/supabase-js';
+import { useFonts } from 'expo-font';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
@@ -9,6 +11,11 @@ export default function RootLayout() {
   const [loading, setLoading] = useState(true);
   const segments = useSegments();
   const router = useRouter();
+
+  const [fontsLoaded] = useFonts({
+    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+  });
 
   useEffect(() => {
     const init = async () => {
@@ -29,16 +36,16 @@ export default function RootLayout() {
 
   useEffect(() => {
     const inAuthGroup = segments[0] === '(auth)';
-    if (!loading) {
+    if (!loading && fontsLoaded) {
       if (!session && !inAuthGroup) {
         router.replace('/sign-in');
       } else if (session && inAuthGroup) {
         router.replace('/');
       }
     }
-  }, [session, segments, loading]);
+  }, [session, segments, loading, fontsLoaded]);
 
-  if (loading) {
+  if (loading || !fontsLoaded) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" />

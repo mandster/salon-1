@@ -435,6 +435,7 @@ buttonText: {
   color: '#fff',
   fontWeight: 'bold',
   fontSize: 16,
+  fontFamily: 'Poppins-SemiBold',
 },
 // In theme/styles.ts
 bookingItem: {
